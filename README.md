@@ -12,7 +12,7 @@ BTW it sounds better through good speakers
 
 before you start you may need to run npm install to install all node.js dependencies...package.json handles dependencies
 
-point your browser to host (currently localhost:1337), the home page provides a list of drums and access to the drum machine itself. In one window go to the drum machine, in other windows select drums and click boxes to create a sequence for each voice. When you go to a drum page, the drum machine detects the drum and displays it, it also updates the machine as you alter your drum sequences. Leaving a drum page removes that voice from the drum machine. Refreshing a drum page flushes the sequence.
+point your browser to host (currently localhost:3000), the home page provides a list of drums and access to the drum machine itself. In one window go to the drum machine, in other windows select drums and click boxes to create a sequence for each voice. When you go to a drum page, the drum machine detects the drum and displays it, it also updates the machine as you alter your drum sequences. Leaving a drum page removes that voice from the drum machine. Refreshing a drum page flushes the sequence.
 
 
 #######Important files (with comments):
