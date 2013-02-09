@@ -1,0 +1,64 @@
+<!DOCTYPE html> 
+<html lang="en">
+	<head> 
+		<meta charset="utf-8" /> 
+			<title><%=  title + drum.name %></title>  
+			<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>			
+			<link rel="stylesheet" href="/styles/reset.css" />  
+			<link rel="stylesheet" href="/styles/style.css" />  
+			
+			<script src="/socket.io/socket.io.js"></script>
+			<script src="/scripts/jquery.min.js"></script>
+
+			
+			<script src="/scripts/drumSeq.js"></script>
+			
+			<script>
+				var socket = io.connect('localhost');
+				var check = false;
+				
+				//if a socket is taken check evaluates to true and display is made inaccessable...
+				//more importantly, the app.js file ensures that no voice can be used twice, 
+				//this is just a nice client side method of providing affordance
+				
+				socket.on('taken',function(data) {
+					if (data.check == socket.socket.sessionid) {
+						$("#header_wrap h1").text("Taken")
+						$("#main_wrap").html("<div id='footer'><p>You've gone and selected a drum someone's already using...</p><a href='/'>Go back home</a></div>")
+					}
+				})
+				//when window loads create a sequence object;
+				//calls methods
+				window.onload = function() {
+					var display = "<%= drum.slug %>";
+					var sequence = new Sequence(display);
+					sequence.drawChildren();
+					sequence.clickListen();
+				
+				}
+			</script>
+			
+	
+			
+	</head>  
+	<body id="index" class="home"> 
+		<div id="header_wrap">
+			<header class="wrapper">
+			<h1><%= drum.name %></h1>
+			</header>
+		</DIV>
+			<div id="main_wrap">
+				<div class="wrapper" id="main">
+					<h2>set your sequence</h2>
+					<div id="single_sequence">
+						
+					</div>
+				</div>
+				<div class="wrapper" id="footer">
+					<p>refresh = erase ur sequence</p>
+					<a href="/">Go back home</a>
+				</div>
+			</div>
+	</body> 
+	
+</html>

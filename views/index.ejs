@@ -1,0 +1,70 @@
+<!DOCTYPE html> 
+<html lang="en">
+	<head> 
+		<meta charset="utf-8" /> 
+			<title><%= title %></title>  
+			<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+			<link rel="stylesheet" href="styles/reset.css" />  
+			<link rel="stylesheet" href="styles/style.css" />  
+			<script src="/scripts/jquery.min.js"></script>
+			<script src="/socket.io/socket.io.js"></script>	
+	</head>  
+	<body id="index" class="home"> 
+		<div id="header_wrap">
+			<header class="wrapper">
+			<a href="machine"><h1><%= title %></h1></a>
+			</header>
+		</div>
+			<div id="main_wrap">
+				<div class="wrapper" id="main">
+					<h2>pick your instrument</h2>
+					<ul id="drum_select" class="selectList">
+					
+					<% drums.forEach(function(drum){ %>
+						<li><a role="<%= drum.slug %>" href="/machine<%= drum.url %>"><%= drum.name %></a>	
+					<%})%>
+					</ul>
+					<h2>..or check out the drum machine</h2>
+					<ul>
+						<li><a href="/machine">::Dr. Dummy::</a></li>
+					</ul>
+				</div>
+			</div>
+			<script>
+			
+				var socket = io.connect('localhost');
+				socket.emit('ping',{});
+				socket.on('pingged',function(){
+					console.log("PING");
+				})
+				//when hideDrums rec'd us jQuery to hide or show voice
+				//uses jQuery.each method as interator
+				//basically says if drum voice exists, hide the link and if not, show the link
+				socket.on('hideDrums', function (data) {
+					console.log("this is the new version");
+					var j = [];
+					if (data.goodStuff.length > 0) {
+					for(var i = 0; i < data.goodStuff.length; i++){
+						j.push(data.goodStuff[i].drumVoice);
+					}
+					$("#drum_select a").each(function(){
+						for(var i = 0; i < j.length; i++) {
+							if ($(this).attr('role') == j[i]) {
+								$(this).animate({left:'-9999'},0); 
+								break;
+							} else {
+								$(this).animate({left:'0'},200);
+							}
+							$(this).css('opacity',1)
+						}	
+					});
+					} else if (data.goodStuff.length == 0) {
+						$("#drum_select a").animate({left:'0'},100);
+					}	
+							
+				});
+				
+			</script>
+	</body> 
+	
+</html>
