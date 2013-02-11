@@ -17,16 +17,17 @@
 		</div>
 			<div id="main_wrap">
 				<div class="wrapper" id="main">
-					<h2>pick your instrument</h2>
+					
+					<h2>check out the drum machine</h2>
+					<ul>
+						<li><a href="/machine">::Dr. Dummy::</a></li>
+					</ul>
+					<h2>...or pick an instrument to play</h2>
 					<ul id="drum_select" class="selectList">
 					
 					<% drums.forEach(function(drum){ %>
 						<li><a role="<%= drum.slug %>" href="/machine<%= drum.url %>"><%= drum.name %></a>	
 					<%})%>
-					</ul>
-					<h2>..or check out the drum machine</h2>
-					<ul>
-						<li><a href="/machine">::Dr. Dummy::</a></li>
 					</ul>
 				</div>
 			</div>
@@ -60,6 +61,7 @@
 					});
 					} else if (data.goodStuff.length == 0) {
 						$("#drum_select a").animate({left:'0'},100);
+						$(this).css('opacity', 1)
 					}	
 							
 				});
