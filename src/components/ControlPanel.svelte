@@ -1,6 +1,7 @@
 <script>
     import Button from "./Button.svelte";
     import Volume from "./Volume.svelte";
+    import FeatherSprite from "./FeatherSprite.svelte";
     import Slider from "./Slider.svelte";
     import { bpm, isPlaying, globalVolume, voices } from "../state/stores.js";
     import { fly } from "svelte/transition";
