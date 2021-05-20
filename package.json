@@ -1,19 +1,30 @@
 {
-  "name": "doctordummy",
-  "subdomain": "doctordummy",
-  "version": "2.0.0-6",
-  "main": "app.js",
+  "name": "Doctor Dummy",
+  "version": "2.0",
   "scripts": {
-    "start": "app.js"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.2",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/addon-svelte-csf": "^1.0.0",
+    "@storybook/svelte": "^6.2.9",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.7",
+    "babel-loader": "^8.2.2",
+    "svelte": "^3.38.2",
+    "svelte-loader": "^3.1.1",
+    "vite": "^2.3.0"
   },
   "dependencies": {
-    "express": "3.0.3",
-    "socket.io": "*",
-    "ejs": "*"
-  },
-  "author": "John Gruen",
-  "license": "BSD",
-  "engines": {
-    "node": "0.8.x"
+    "howler": "^2.2.1",
+    "jsonpack": "^1.1.5",
+    "lzwcompress": "^0.7.1",
+    "worker-timers": "^7.0.29"
   }
 }
