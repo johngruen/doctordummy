@@ -6,7 +6,10 @@
     import samples from "../data/samples";
     import { BEATS } from "../data/constants.js";
 
-    const PUB_PATH = "../public/samples/";
+    const PUB_PATH =
+        import.meta.env.MODE === "production"
+            ? "./samples/production"
+            : "../public/samples/";
 
     import {
         voices,
