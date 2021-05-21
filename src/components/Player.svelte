@@ -8,7 +8,7 @@
 
     const PUB_PATH =
         import.meta.env.MODE === "production"
-            ? "./samples/production"
+            ? "./samples/"
             : "../public/samples/";
 
     import {
